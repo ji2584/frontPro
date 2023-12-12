@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DOMContentLoaded</title>
+<script>
+//html 태그를 쉽게 만들 수 있는 콜백 함수를 선언합니다.
+const fh1 =(text) => `<h1>${text}</h1>`
+</script>
+<script>
+document.body.innerHTML += fh1('1번쨰 script 태그') //실행 불가능 body없음
+</script>
+</head>
+<body>
+<script>
+document.body.innerHTML += fh1('2번쨰 script 태그')
+</script>
+<h1>1번쨰 h1 태그</h1>
+<script>
+document.body.innerHTML += fh1('3번쨰 script 태그')
+</script>
+<h1>2번쨰 h2 태그</h1>
+</body>
+</html>

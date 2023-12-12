@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+//25개의 div 태그를 조작해서 검은색에서 흰색으로 변화하는 그레이디언트를 만드는 코드 만들기
+document.addEventListener('DOMContentLoaded',() => {
+	const divs = document.querySelectorAll('body > div')
+	//body > div : body 바로 아래 div --자식
+	//body div : body 모든 div --자손
+	//body 태그 아래에 있는 div 태그를 선택
+	
+	divs.forEach((div,index) => {   //div 개수만큼 반복하여 출력
+		console.log(div,index)
+        const val = index*10  // 인덱스는 0부터 24까지 반복
+        div.style.height = `100px` //크기를 지정할 떄는 반드시 단위를 함께 붙여줘야함
+        div.style.backgroundColor = `rgba(${val},${val},${val})`
+	})
+	})
+	
+</script>
+</head>
+<body>
+<!--  div 태그 25개 -->
+<div></div><div></div><div></div><div></div><div></div>
+<div></div><div></div><div></div><div></div><div></div>
+<div></div><div></div><div></div><div></div><div></div>
+<div></div><div></div><div></div><div></div><div></div>
+<div></div><div></div><div></div><div></div><div></div>
+</body>
+</html>

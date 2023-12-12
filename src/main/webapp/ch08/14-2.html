@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$('h3').filter(':even').css({
+		backgroundColor:'Black',
+		color:'White'
+	})
+})
+/* window.onload = function(){
+	let h3s = document.querySelectorAll('h3')
+	h3s.forEach((h3,index) =>{
+		if(index%2 == 0){
+			h3.style.backgroundColor='black'
+			h3.style.color='white'
+		}
+	})
+}*/ //순수 javasciprt
+
+</script>
+</head>
+
+<body>
+<h3>header - 0</h3>
+<h3>header - 1</h3>  
+<h3>header - 2</h3>
+<h3>header - 3</h3>
+<h3>header - 4</h3>
+
+</body>
+</html>

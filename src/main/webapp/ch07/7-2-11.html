@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+//기본 이벤트: 어떤 이벤트가 발생했을 떄 웹 브라우저가 기본적으로 처리해주는 것
+document.addEventListener('DOMContentLoaded',() => {
+
+	const imgs = document.querySelectorAll('img')
+	//(value,index,imgs)
+	imgs.forEach((img,Index) => {
+	img.addEventListener('contextmenu',(event) => {
+		alert(Index)
+		if(Index===1) {		
+		event.preventDefault() //컨텍스트 메뉴를 출력하는 기본 이벤트를 제거
+		}  
+		
+	})	
+	})
+})
+</script>
+</head>
+<body>
+<img src = "http://placekitten.com/300/300"alt="">
+<img src = "http://placekitten.com/300/300"alt="">
+<img src = "http://placekitten.com/300/300"alt="">
+</body>
+</html>

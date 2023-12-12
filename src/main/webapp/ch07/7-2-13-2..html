@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>할 일 목록</h1>
+<input id="todo">
+<button id="add-button">추가하기</button>
+<div id="todo-list"></div>
+<button id="delete-button">체크된 항목 삭제</button> <!-- 삭제 버튼 추가 -->
+
+<script>
+	//문서 객체를 가져옵니다.
+	let keyCount = 0
+	const input = document.querySelector('#todo')
+	const todoList = document.querySelector('#todo-list')
+	const addButton = document.querySelector('#add-button')
+	const deleteButton = document.querySelector('#delete-button'); // delete-button 요소 선택
+
+	// 함수를 선언합니다.
+	const addTodo = () => {
+		if (input.value.trim() === "") {
+			alert('할 일을 입력해주세요.')
+			return
+		}
+
+		const item = document.createElement('div')
+		const checkbox = document.createElement('input')
+		const text = document.createElement('span')
+		const button = document.createElement('button')
+
+		const key = keyCount
+		keyCount += 1
+		item.setAttribute('data-key', key)
+
+		item.appendChild(checkbox)
+		checkbox.type = 'checkbox'
+		item.appendChild(text)
+		text.textContent = input.value
+		item.appendChild(button)
+		button.textContent = '제거하기'
+
+		todoList.appendChild(item)
+
+		checkbox.addEventListener('change', (event) => {
+			text.style.textDecoration = event.target.checked ? 'line-through' : ''
+		})
+
+		button.addEventListener('click', () => {
+			removeTodo(key)
+		})
+
+		input.value = ''
+	}
+
+	const removeTodo = (key) => {
+		const item = document.querySelector(`[data-key="${key}"]`);
+		todoList.removeChild(item);
+	};
+
+	const removeCheckedTodos = () => {
+		const checkedItems = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'));
+		checkedItems.forEach(checkbox => {
+			const key = checkbox.parentNode.getAttribute('data-key');
+			removeTodo(key);
+		});
+	};
+
+	// 버튼 클릭 시 체크된 요소 삭제
+	deleteButton.addEventListener('click', removeCheckedTodos);
+
+	addButton.addEventListener('click', addTodo)
+	input.addEventListener('keyup', (event) => {
+		const Enter = 13
+		if (event.keyCode === 13) { addTodo() }
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>할 일 목록</h1>
+<input id="todo">
+<button id="add-button">추가하기</button>
+<button id = "remove">제거하기</button>
+<div id="todo-list"></div>
+</body>
+ 
+<script>
+	//문서 객체를 가져옵니다.
+	
+	const input = document.querySelector('#todo')
+	const todoList = document.querySelector('#todo-list')
+	const addButton = document.querySelector('#add-button')
+    const removeButton = document.querySelector('#remove')
+	
+	//2.function
+	//함수를 선언합니다.
+	const addTodo = () => {
+		//입력약식에 내용이 없으면 추가하지 않습니다.
+	if(input.value.trim()==="") {
+		alert('할 일을 입력해주세요.')
+		return
+	}
+		
+	//문서 객체를 설정합니다. 
+	const item = document.createElement('div')
+	const checkbox = document.createElement('input')
+	const text = document.createElement('span')
+	
+	
+
+	
+	item.appendChild(checkbox)
+	checkbox.type='checkbox'
+	item.appendChild(text)
+	text.textContent = input.value
+	
+	
+	todoList.appendChild(item)
+	
+	//event add
+		checkbox.addEventListener('change',(event) => {
+			text.style.textDecoration
+				= event.target.checked ? 'line-through' : ''
+						
+						
+						
+		})	
+								
+		input.value=''
+			
+	}	//addtodo end
+	
+	const removeTodo = (key) => {
+		//식별 키로 문서 객체를 제거합니다.
+		const checks = document.querySelectorAll('div>input')
+		checks.forEach((check)=> {
+			if(check.checked){
+				todoList.removeChild(check.parentNode)
+			}
+		})
+	}//removeTodo end
+	
+					
+	
+	//3.이벤트 연결
+	addButton.addEventListener('click',addTodo)
+	//enter 입력시 addTOdo 실행
+		input.addEventListener('keyup',(event) => {
+			const Enter = 13
+		if(event.keyCode ===13) {addTodo()}
+	})
+	
+	removeButton.addEventListener('click',() => {
+				removeTodo()
+			})	
+</script>
+</html>

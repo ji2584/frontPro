@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+// 속성 이름               설명
+// 문서객체.textContent    입력된 문자열을 그대로 기입
+// 문서 객체.innerHTML     입력된 문자열을 HTML 형식으로 기입
+document.addEventListener('DOMContentLoaded',() => {
+	const a = document.querySelector('#a')
+	const b = document.querySelector('#b')
+	a.tectContent = '<h1>textContent 속성 </h1>'
+	b.innerHTML = '<h1>innerHTML 속성 </h1>'
+})
+</script>
+</head>
+<body>
+<div id = "a"></div>
+<div id = "b"></div>
+</body>
+</html>
